@@ -1,0 +1,201 @@
+{% extends "base.html" %}
+{% block titulo %}{{ produto.nome }} | ActionHub{% endblock %}
+{% block banner %}{% endblock %}
+
+{% block conteudo %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb small">
+    <li class="breadcrumb-item"><a href="{% url 'lista' %}">Início</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'lista' %}?categoria={{ produto.categoria.id }}">{{ produto.categoria }}</a></li>
+    <li class="breadcrumb-item active">{{ produto.nome }}</li>
+  </ol>
+</nav>
+
+<div class="produto-box mb-4">
+  <div class="row g-4">
+
+    <!-- Galeria -->
+    <div class="col-lg-5">
+      <div class="galeria">
+        {% if produto.imagem %}
+        <div class="miniaturas">
+          <button type="button" class="mini ativa" data-zoom="1"   data-origin="50% 50%" aria-label="Foto 1"><img src="{{ produto.imagem.url }}" alt=""></button>
+          <button type="button" class="mini"       data-zoom="2"   data-origin="50% 12%" aria-label="Foto 2"><img src="{{ produto.imagem.url }}" alt=""></button>
+          <button type="button" class="mini"       data-zoom="1.7" data-origin="50% 55%" aria-label="Foto 3"><img src="{{ produto.imagem.url }}" alt=""></button>
+          <button type="button" class="mini"       data-zoom="2"   data-origin="50% 95%" aria-label="Foto 4"><img src="{{ produto.imagem.url }}" alt=""></button>
+        </div>
+        <div class="img-principal">
+          <img src="{{ produto.imagem.url }}" alt="{{ produto.nome }}" id="fotoPrincipal">
+        </div>
+        {% else %}
+        <div class="img-principal sem-imagem"><i class="bi bi-image"></i></div>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Informações -->
+    <div class="col-lg-4">
+      <h1 class="h4 fw-bold mb-1">{{ produto.nome }}</h1>
+      <div class="small mb-2"><a href="{% url 'lista' %}" class="text-decoration-none">Visite a loja ActionHub</a></div>
+
+      <div class="d-flex align-items-center gap-2 mb-2">
+        <span class="small fw-semibold">{{ media }}</span>
+        <span class="estrelas">{% for e in estrelas %}<i class="bi {{ e }}"></i>{% endfor %}</span>
+        <a href="#avaliacoes" class="small text-decoration-none">({{ total_avaliacoes }} avaliações)</a>
+      </div>
+
+      <span class="selo-escolha">Escolha da ActionHub</span>
+      <p class="small fw-semibold mt-2 mb-0">Mais de 50 compras no mês passado</p>
+
+      <hr>
+
+      <span class="etiqueta-oferta">Oferta da semana</span>
+      <div class="d-flex align-items-baseline gap-2 mt-2">
+        <span class="desconto">-20%</span>
+        <span class="preco-grande">R$ {{ produto.preco|floatformat:2 }}</span>
+      </div>
+      <div class="small text-muted">De: <s>R$ {% widthratio produto.preco 80 100 %}</s></div>
+
+      <p class="small mt-2 mb-1">
+        <strong class="preco-pix">R$ {{ preco_pix|floatformat:2 }}</strong> no PIX
+        <span class="badge bg-success">10% OFF</span>
+      </p>
+      <p class="small text-primary fw-semibold">Parcele em até 6x de R$ {{ parcela|floatformat:2 }} sem juros no cartão</p>
+
+      <ul class="beneficios list-unstyled mb-3">
+        <li><i class="bi bi-truck"></i> Entrega para todo o Brasil</li>
+        <li><i class="bi bi-arrow-repeat"></i> Troca em até 7 dias</li>
+        <li><i class="bi bi-shield-check"></i> Compra 100% segura</li>
+        <li><i class="bi bi-box-seam"></i> Embalagem reforçada</li>
+      </ul>
+
+      <h2 class="h6 fw-bold">Sobre este item</h2>
+      {% if produto.descricao %}
+        <p class="small">{{ produto.descricao|linebreaksbr }}</p>
+      {% else %}
+        <p class="small text-muted">Action figure colecionável da categoria {{ produto.categoria }}.</p>
+      {% endif %}
+
+      <table class="table table-sm small ficha">
+        <tr><th>Categoria</th><td>{{ produto.categoria }}</td></tr>
+        <tr><th>Marca</th><td>ActionHub</td></tr>
+        <tr><th>Disponibilidade</th><td>{{ produto.estoque }} unidades</td></tr>
+      </table>
+    </div>
+
+    <!-- Caixa de compra -->
+    <div class="col-lg-3">
+      <div class="buybox">
+        <div class="buybox-preco">R$ {{ produto.preco|floatformat:2 }}</div>
+        <div class="small text-muted mb-2">ou R$ {{ preco_pix|floatformat:2 }} no PIX</div>
+
+        {% if frete_gratis %}
+          <p class="small mb-2">Entrega <strong class="text-success">GRÁTIS</strong> para todo o Brasil.</p>
+        {% else %}
+          <p class="small mb-2">Frete grátis em compras acima de R$ 299.</p>
+        {% endif %}
+        <p class="small text-muted mb-2"><i class="bi bi-geo-alt"></i> Receba em até 7 dias úteis</p>
+
+        {% if produto.estoque > 0 %}
+          <p class="estoque-ok mb-1">Em estoque</p>
+          {% if produto.estoque <= 5 %}
+            <p class="text-danger small fw-semibold">Restam apenas {{ produto.estoque }} unidades!</p>
+          {% endif %}
+
+          {% if user.is_authenticated %}
+            <a href="{% url 'adicionar' produto.id %}" class="btn btn-amarelo w-100 mb-2">Adicionar ao carrinho</a>
+            <a href="{% url 'adicionar' produto.id %}" class="btn btn-laranja w-100">Comprar agora</a>
+          {% else %}
+            <a href="{% url 'login' %}" class="btn btn-amarelo w-100 mb-2">Entre para comprar</a>
+            <a href="{% url 'cadastro' %}" class="btn btn-outline-dark w-100 rounded-pill">Criar conta</a>
+          {% endif %}
+        {% else %}
+          <p class="text-danger fw-semibold">Indisponível no momento</p>
+        {% endif %}
+
+        <table class="table table-sm small mt-3 mb-0 ficha">
+          <tr><th>Enviado por</th><td>ActionHub</td></tr>
+          <tr><th>Vendido por</th><td>ActionHub</td></tr>
+          <tr><th>Devolução</th><td>Troca em até 7 dias</td></tr>
+          <tr><th>Pagamento</th><td>Transação segura</td></tr>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Avaliações -->
+<div class="produto-box mb-4" id="avaliacoes">
+  <h2 class="h5 mb-4">Avaliações dos clientes</h2>
+  <div class="row g-4">
+
+    <div class="col-lg-4">
+      <div class="d-flex align-items-center gap-3 mb-2">
+        <div class="nota-grande">{{ media }}</div>
+        <div>
+          <div class="estrelas fs-5">{% for e in estrelas %}<i class="bi {{ e }}"></i>{% endfor %}</div>
+          <small class="text-muted">{{ total_avaliacoes }} avaliações</small>
+        </div>
+      </div>
+      <p class="text-muted small">Avaliações ilustrativas, criadas para fins acadêmicos.</p>
+    </div>
+
+    <div class="col-lg-8">
+      {% for a in avaliacoes %}
+      <div class="avaliacao d-flex gap-3">
+        <div class="avatar">{{ a.inicial }}</div>
+        <div>
+          <strong>{{ a.nome }}</strong>
+          <div class="d-flex flex-wrap align-items-center gap-2">
+            <span class="estrelas small">{% for e in a.estrelas %}<i class="bi {{ e }}"></i>{% endfor %}</span>
+            <span class="verificada">Compra verificada</span>
+          </div>
+          <small class="text-muted">Avaliado em {{ a.data|date:"d/m/Y" }}</small>
+          <p class="mb-0 mt-1">{{ a.texto }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</div>
+
+<!-- Relacionados -->
+{% if relacionados %}
+<h2 class="h5 mb-3">Você também pode gostar</h2>
+<div class="row row-cols-2 row-cols-md-4 g-3 mb-4">
+  {% for r in relacionados %}
+  <div class="col">
+    <div class="card produto-card h-100 shadow-sm">
+      {% if r.imagem %}<img src="{{ r.imagem.url }}" class="card-img-top" style="height:160px;object-fit:cover" alt="{{ r.nome }}">{% endif %}
+      <div class="card-body p-2">
+        <a href="{% url 'detalhe' r.id %}" class="stretched-link text-decoration-none text-dark small fw-semibold">{{ r.nome }}</a>
+        <div class="fw-bold text-success small">R$ {{ r.preco }}</div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+<script>
+  // Miniaturas: mostram um "ângulo" diferente da foto
+  (function () {
+    var minis = document.querySelectorAll('.mini');
+    var principal = document.getElementById('fotoPrincipal');
+    function aplicar(img, zoom, origin) {
+      img.style.transformOrigin = origin;
+      img.style.transform = 'scale(' + zoom + ')';
+    }
+    minis.forEach(function (b) {
+      aplicar(b.querySelector('img'), b.dataset.zoom, b.dataset.origin);
+      b.addEventListener('click', function () {
+        minis.forEach(function (x) { x.classList.remove('ativa'); });
+        b.classList.add('ativa');
+        if (principal) aplicar(principal, b.dataset.zoom, b.dataset.origin);
+      });
+    });
+  })();
+</script>
+{% endblock %}

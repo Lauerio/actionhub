@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<h2 class="mb-3">Action figures</h2>
+<div class="mb-4">
+  <a href="{% url 'lista' %}" class="btn btn-sm btn-dark">Todas</a>
+  {% for c in categorias %}
+    <a href="?categoria={{ c.id }}" class="btn btn-sm btn-outline-dark">{{ c.nome }}</a>
+  {% endfor %}
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  {% for p in produtos %}
+  <div class="col">
+    <div class="card produto-card h-100 shadow-sm">
+      {% if p.imagem %}
+        <img src="{{ p.imagem.url }}" class="card-img-top" style="height:250px;object-fit:cover" alt="{{ p.nome }}">
+      {% endif %}
+      <div class="card-body">
+        <span class="badge bg-secondary">{{ p.categoria }}</span>
+        <h5 class="card-title mt-2">
+          <a href="{% url 'detalhe' p.id %}" class="stretched-link text-decoration-none text-dark">{{ p.nome }}</a>
+        </h5>
+        <div class="small">
+          <span class="estrelas">{% for e in p.estrelas %}<i class="bi {{ e }}"></i>{% endfor %}</span>
+          <span class="text-muted">{{ p.media }} ({{ p.total_avaliacoes }})</span>
+        </div>
+        <p class="fw-bold text-success mt-2 mb-0">R$ {{ p.preco }}</p>
+      </div>
+      <div class="card-footer bg-transparent border-0 pb-3">
+        {% if user.is_authenticated %}
+          <a href="{% url 'adicionar' p.id %}" class="btn btn-success w-100">
+            <i class="bi bi-cart-plus"></i> Comprar
+          </a>
+        {% else %}
+          <a href="{% url 'login' %}" class="btn btn-secondary w-100">Entre para comprar</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% empty %}
+  <p>Nenhum produto cadastrado ainda.</p>
+  {% endfor %}
+</div>
+{% endblock %}

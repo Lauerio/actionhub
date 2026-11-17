@@ -1,0 +1,236 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block titulo %}ActionHub{% endblock %}</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="{% static 'css/estilo.css' %}" rel="stylesheet">
+  <link rel="icon" href="{% static 'img/logo.jpg' %}">
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+<!-- Desenhos reutilizáveis (borboleta e glicínia) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="borboleta">
+      <path d="M50 40 C35 5, 5 5, 8 30 C10 45, 35 50, 50 40 Z" fill="currentColor" fill-opacity=".9"/>
+      <path d="M50 40 C65 5, 95 5, 92 30 C90 45, 65 50, 50 40 Z" fill="currentColor" fill-opacity=".9"/>
+      <path d="M50 42 C35 50, 15 55, 22 70 C30 82, 46 62, 50 42 Z" fill="currentColor" fill-opacity=".75"/>
+      <path d="M50 42 C65 50, 85 55, 78 70 C70 82, 54 62, 50 42 Z" fill="currentColor" fill-opacity=".75"/>
+      <ellipse cx="50" cy="45" rx="2.5" ry="14" fill="currentColor"/>
+      <path d="M49 32 C46 22, 42 18, 38 16 M51 32 C54 22, 58 18, 62 16"
+            stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    </g>
+
+    <g id="glicinia">
+      <path d="M30 0 V12" stroke="#5b8a3c" stroke-width="3" fill="none"/>
+      <circle cx="14" cy="16" r="8" fill="#b388eb"/>
+      <circle cx="30" cy="14" r="8" fill="#c9a7f0"/>
+      <circle cx="46" cy="16" r="8" fill="#9d6fe0"/>
+      <circle cx="18" cy="30" r="7" fill="#9d6fe0"/>
+      <circle cx="30" cy="30" r="7" fill="#b388eb"/>
+      <circle cx="42" cy="30" r="7" fill="#c9a7f0"/>
+      <circle cx="24" cy="44" r="6" fill="#c9a7f0"/>
+      <circle cx="36" cy="44" r="6" fill="#9d6fe0"/>
+      <circle cx="22" cy="57" r="5" fill="#b388eb"/>
+      <circle cx="38" cy="57" r="5" fill="#c9a7f0"/>
+      <circle cx="30" cy="70" r="5" fill="#9d6fe0"/>
+      <circle cx="30" cy="83" r="4" fill="#b388eb"/>
+    </g>
+  </defs>
+</svg>
+
+<nav class="navbar navbar-dark mb-4">
+
+  <!-- Glicínias penduradas no topo -->
+  <div class="deco" aria-hidden="true">
+    <svg class="glicinia" style="left:2%" viewBox="0 0 60 95"><use href="#glicinia"/></svg>
+    <svg class="glicinia g2" style="left:30%" viewBox="0 0 60 95"><use href="#glicinia"/></svg>
+    <svg class="glicinia g3" style="left:52%" viewBox="0 0 60 95"><use href="#glicinia"/></svg>
+  </div>
+
+  <div class="container">
+    <a class="navbar-brand marca d-flex align-items-center gap-2" href="{% url 'lista' %}">
+
+      <!-- Borboletas ao redor da logo -->
+      <span class="borboletas" aria-hidden="true">
+        <svg class="borboleta clara"  style="left:-16px; top:-12px; width:22px; animation-delay:0s"   viewBox="0 0 100 80"><use href="#borboleta"/></svg>
+        <svg class="borboleta escura" style="left:34px;  top:-14px; width:18px; animation-delay:1s"   viewBox="0 0 100 80"><use href="#borboleta"/></svg>
+        <svg class="borboleta clara"  style="left:58px;  top:22px;  width:16px; animation-delay:2s"   viewBox="0 0 100 80"><use href="#borboleta"/></svg>
+        <svg class="borboleta escura" style="left:-18px; top:24px;  width:18px; animation-delay:1.5s" viewBox="0 0 100 80"><use href="#borboleta"/></svg>
+      </span>
+
+      <img src="{% static 'img/logo.jpg' %}" alt="ActionHub" height="36">
+      ActionHub
+    </a>
+
+    <div class="d-flex gap-2 align-items-center">
+      {% if user.is_authenticated %}
+        <a class="btn btn-outline-light btn-sm" href="{% url 'carrinho' %}">Carrinho</a>
+        <a class="btn btn-outline-light btn-sm" href="{% url 'meus_pedidos' %}">Meus pedidos</a>
+        <form method="post" action="{% url 'logout' %}" class="m-0">
+          {% csrf_token %}
+          <button class="btn btn-danger btn-sm">Sair ({{ user.username }})</button>
+        </form>
+      {% else %}
+        <a class="btn btn-outline-light btn-sm" href="{% url 'login' %}">Entrar</a>
+        <a class="btn btn-warning btn-sm" href="{% url 'cadastro' %}">Cadastrar</a>
+      {% endif %}
+    </div>
+  </div>
+</nav>
+
+<!-- Apresentação da loja + banner de promoções -->
+{% block banner %}
+<section class="container mb-4">
+  <div class="intro-loja">
+    <h1 class="h3">Bem-vindo à ActionHub</h1>
+    <p>Action figures colecionáveis de Marvel, anime, DC e games, com embalagem reforçada e envio seguro. Confira as promoções da semana!</p>
+  </div>
+
+  <div id="bannerPromo" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#bannerPromo" data-bs-slide-to="0" class="active" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#bannerPromo" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#bannerPromo" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#bannerPromo" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    </div>
+
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="slide slide-1">
+          <span class="etiqueta">FRETE GRÁTIS</span>
+          <h2>Frete grátis acima de R$ 299</h2>
+          <p>Monte sua coleção sem pagar a entrega.</p>
+          <a href="{% url 'lista' %}" class="btn btn-warning btn-sm">Ver produtos</a>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="slide slide-2">
+          <span class="etiqueta">PIX</span>
+          <h2>10% OFF pagando no PIX</h2>
+          <p>Desconto aplicado direto no fechamento do pedido.</p>
+          <a href="{% url 'lista' %}" class="btn btn-warning btn-sm">Aproveitar</a>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="slide slide-3">
+          <span class="etiqueta">LANÇAMENTOS</span>
+          <h2>Novidades chegando toda semana</h2>
+          <p>Fique de olho nas figuras novas de Marvel, anime e DC.</p>
+          <a href="{% url 'lista' %}" class="btn btn-warning btn-sm">Ver novidades</a>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="slide slide-4">
+          <span class="etiqueta">PRÉ-VENDA</span>
+          <h2>Garanta a sua antes de esgotar</h2>
+          <p>Peças limitadas para colecionadores de verdade.</p>
+          <a href="{% url 'lista' %}" class="btn btn-warning btn-sm">Quero a minha</a>
+        </div>
+      </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#bannerPromo" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Anterior</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#bannerPromo" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Próximo</span>
+    </button>
+  </div>
+</section>
+{% endblock %}
+
+<main class="container flex-grow-1">{% block conteudo %}{% endblock %}</main>
+
+<footer class="rodape">
+
+  <!-- Arte: borboletas escuras voando sobre as flores -->
+  <div class="rodape-arte" aria-hidden="true">
+    <div class="rodape-borboletas">
+      <img src="{% static 'img/borboleta-escura.png' %}" class="b-escura" style="left:5%;  bottom:170px; width:80px; animation-delay:0s"   alt="">
+      <img src="{% static 'img/borboleta-escura.png' %}" class="b-escura" style="left:27%; bottom:210px; width:60px; animation-delay:1.2s" alt="">
+      <img src="{% static 'img/borboleta-escura.png' %}" class="b-escura" style="left:49%; bottom:160px; width:90px; animation-delay:2.1s" alt="">
+      <img src="{% static 'img/borboleta-escura.png' %}" class="b-escura" style="left:71%; bottom:220px; width:70px; animation-delay:0.6s" alt="">
+      <img src="{% static 'img/borboleta-escura.png' %}" class="b-escura" style="left:89%; bottom:180px; width:64px; animation-delay:1.8s" alt="">
+    </div>
+    <div class="rodape-flores"></div>
+  </div>
+
+  <!-- Informações -->
+  <div class="rodape-info">
+    <div class="container">
+      <div class="row g-4">
+
+        <div class="col-md-6 col-lg-4">
+          <div class="rodape-marca">
+            <img src="{% static 'img/logo.jpg' %}" alt="">
+            <span>ActionHub</span>
+          </div>
+          <p class="mt-3">Loja virtual de action figures colecionáveis: Marvel, anime, DC e games, com embalagem reforçada e envio seguro para todo o Brasil.</p>
+          <p><strong class="text-white">Slogan:</strong> "Colecione histórias, exponha emoções."</p>
+          <div class="redes">
+            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+            <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-2">
+          <h5>Navegação</h5>
+          <ul>
+            <li><a href="{% url 'lista' %}"><i class="bi bi-chevron-right"></i>Início</a></li>
+            {% if user.is_authenticated %}
+              <li><a href="{% url 'carrinho' %}"><i class="bi bi-chevron-right"></i>Carrinho</a></li>
+              <li><a href="{% url 'meus_pedidos' %}"><i class="bi bi-chevron-right"></i>Meus pedidos</a></li>
+            {% else %}
+              <li><a href="{% url 'login' %}"><i class="bi bi-chevron-right"></i>Entrar</a></li>
+              <li><a href="{% url 'cadastro' %}"><i class="bi bi-chevron-right"></i>Cadastrar</a></li>
+            {% endif %}
+          </ul>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <h5>Compra e Entrega</h5>
+          <ul>
+            <li><i class="bi bi-truck"></i><strong class="text-white">Frete grátis</strong> acima de R$ 299</li>
+            <li><i class="bi bi-qr-code"></i><strong class="text-white">PIX:</strong> 10% OFF</li>
+            <li><i class="bi bi-credit-card-fill"></i><strong class="text-white">Cartão:</strong> até 6x sem juros</li>
+            <li><i class="bi bi-arrow-repeat"></i><strong class="text-white">Troca:</strong> em até 7 dias</li>
+          </ul>
+          <span class="selo">CDC Art. 49</span>
+          <small> direito de arrependimento em até 7 dias.</small>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <h5>Contato e Sede</h5>
+          <ul>
+            <li><i class="bi bi-geo-alt-fill"></i>Rua dos Colecionadores, 100 – Centro</li>
+            <li><i class="bi bi-envelope-fill"></i>contato@actionhub.com.br</li>
+            <li><i class="bi bi-telephone-fill"></i>(00) 90000-0000</li>
+            <li><i class="bi bi-clock-fill"></i>Seg a Sáb: 08h às 18h</li>
+          </ul>
+          <a href="{% url 'lista' %}" class="btn btn-warning rounded-pill px-4 mt-2">
+            <i class="bi bi-heart-fill me-1"></i> Ver promoções
+          </a>
+        </div>
+
+      </div>
+
+      <div class="rodape-fim">
+        <span>© {% now "Y" %} <strong class="text-white">ActionHub</strong>. Trabalho Final de Django.</span>
+        <span>Feito com carinho para colecionadores de action figures.</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+
+{% extends "base.html" %}
+{% block conteudo %}
+
+<h2>Meus pedidos</h2>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    {% endfor %}
+{% endif %}
+
+{% for p in pedidos %}
+<div class="card mb-3">
+    <div class="card-header">
+        Pedido #{{ p.id }} · {{ p.criado_em|date:"d/m/Y H:i" }}
+    </div>
+    <ul class="list-group list-group-flush">
+        {% for i in p.itens.all %}
+        <li class="list-group-item">
+            {{ i.quantidade }}x {{ i.produto.nome }}
+        </li>
+        {% endfor %}
+    </ul>
+    <div class="card-footer fw-bold">
+        Total: R$ {{ p.total }}
+    </div>
+</div>
+{% empty %}
+<p>Você ainda não fez pedidos.</p>
+{% endfor %}
+
+{% endblock %}

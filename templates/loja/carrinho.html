@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% block titulo %}Meu carrinho | ActionHub{% endblock %}
+{% block banner %}{% endblock %}
+
+{% block conteudo %}
+<h2 class="mb-4">Meu carrinho</h2>
+
+{% if itens %}
+<div class="row g-4">
+
+  <!-- Itens -->
+  <div class="col-lg-8">
+    <div class="produto-box">
+
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <span class="text-muted small">{{ qtd_total }} item{{ qtd_total|pluralize:"ns" }} no carrinho</span>
+        <form method="post" action="{% url 'esvaziar' %}" class="m-0"
+              onsubmit="return confirm('Remover todos os itens do carrinho?');">
+          {% csrf_token %}
+          <button class="btn btn-link btn-sm text-danger p-0">Esvaziar carrinho</button>
+        </form>
+      </div>
+
+      {% for i in itens %}
+      <div class="item-carrinho">
+
+        <a href="{% url 'detalhe' i.produto.id %}" class="item-foto">
+          {% if i.produto.imagem %}
+            <img src="{{ i.produto.imagem.url }}" alt="{{ i.produto.nome }}">
+          {% else %}
+            <i class="bi bi-image"></i>
+          {% endif %}
+        </a>
+
+        <div class="item-info">
+          <a href="{% url 'detalhe' i.produto.id %}" class="item-nome">{{ i.produto.nome }}</a>
+          <div class="small text-muted">{{ i.produto.categoria }}</div>
+          <div class="small text-success">Em estoque</div>
+          <div class="small">R$ {{ i.produto.preco|floatformat:2 }} cada</div>
+
+          <div class="d-flex align-items-center flex-wrap gap-3 mt-2">
+            <div class="qtd-controle">
+              <form method="post" action="{% url 'diminuir' i.id %}">
+                {% csrf_token %}
+                <button class="qtd-btn" aria-label="Diminuir quantidade">
+                  {% if i.quantidade == 1 %}<i class="bi bi-trash3"></i>{% else %}−{% endif %}
+                </button>
+              </form>
+              <span class="qtd-num">{{ i.quantidade }}</span>
+              <form method="post" action="{% url 'aumentar' i.id %}">
+                {% csrf_token %}
+                <button class="qtd-btn" aria-label="Aumentar quantidade"
+                        {% if i.quantidade >= i.produto.estoque %}disabled title="Limite do estoque"{% endif %}>+</button>
+              </form>
+            </div>
+
+            <form method="post" action="{% url 'remover' i.id %}" class="m-0">
+              {% csrf_token %}
+              <button class="btn btn-link btn-sm text-danger p-0">Remover</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="item-preco">R$ {{ i.subtotal|floatformat:2 }}</div>
+      </div>
+      {% endfor %}
+
+      <div class="text-end mt-3">
+        <span class="text-muted">Subtotal ({{ qtd_total }} item{{ qtd_total|pluralize:"ns" }}):</span>
+        <strong class="fs-5">R$ {{ total|floatformat:2 }}</strong>
+      </div>
+    </div>
+
+    <a href="{% url 'lista' %}" class="btn btn-link mt-2 ps-0">
+      <i class="bi bi-arrow-left"></i> Continuar comprando
+    </a>
+  </div>
+
+  <!-- Resumo -->
+  <div class="col-lg-4">
+    <div class="buybox">
+      <h3 class="h5 mb-3">Resumo do pedido</h3>
+
+      {% if frete_gratis %}
+        <p class="small text-success fw-semibold mb-2"><i class="bi bi-truck"></i> Você ganhou frete grátis!</p>
+      {% else %}
+        <p class="small mb-1"><i class="bi bi-truck"></i> Faltam <strong>R$ {{ faltam_frete|floatformat:2 }}</strong> para o frete grátis</p>
+      {% endif %}
+      <div class="progress mb-3" style="height:8px">
+        <div class="progress-bar bg-success" style="width: {{ progresso_frete }}%"></div>
+      </div>
+
+      <div class="linha-resumo"><span>Produtos ({{ qtd_total }})</span><span>R$ {{ total|floatformat:2 }}</span></div>
+      <div class="linha-resumo">
+        <span>Frete</span>
+        {% if frete_gratis %}<span class="text-success">Grátis</span>{% else %}<span>A calcular</span>{% endif %}
+      </div>
+      <hr>
+      <div class="linha-resumo total"><span>Total</span><span>R$ {{ total|floatformat:2 }}</span></div>
+      <div class="small text-muted mb-3">ou <strong class="preco-pix">R$ {{ total_pix|floatformat:2 }}</strong> no PIX (10% OFF)</div>
+
+      <form method="POST" action="{% url 'finalizar' %}">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-laranja w-100 mb-2">
+        Finalizar compra
+    </button>
+</form>
+      <small class="text-muted d-block text-center"><i class="bi bi-shield-check"></i> Compra 100% segura</small>
+    </div>
+  </div>
+
+</div>
+
+{% else %}
+<div class="produto-box text-center py-5">
+  <i class="bi bi-cart-x display-3 text-muted"></i>
+  <h3 class="h5 mt-3">Seu carrinho está vazio</h3>
+  <p class="text-muted">Que tal dar uma olhada nas nossas action figures?</p>
+  <a href="{% url 'lista' %}" class="btn btn-amarelo px-4">Ver produtos</a>
+</div>
+{% endif %}
+{% endblock %}
