@@ -1,0 +1,605 @@
+[
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2026-11-16T23:18:35.505Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "1",
+    "object_repr": "Demon Slayer",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2026-11-16T23:18:44.928Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "2",
+    "object_repr": "Oshi no ko",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2026-11-16T23:18:53.527Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "3",
+    "object_repr": "Monster high",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2026-11-16T23:19:01.247Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "4",
+    "object_repr": "Frieren",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2026-11-16T23:19:17.041Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "5",
+    "object_repr": "Spider-woman",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2026-11-16T23:20:19.698Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "5",
+    "object_repr": "Marvel",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Nome\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2026-11-16T23:34:57.476Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "1",
+    "object_repr": "Shinobu Funny Knights",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2026-11-16T23:36:40.798Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "2",
+    "object_repr": "Shinobu ANIPLEX",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2026-11-16T23:37:57.441Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "3",
+    "object_repr": "Shinobu Alter",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2026-11-16T23:38:51.821Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "4",
+    "object_repr": "Rengoku Aniplex",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2026-11-16T23:39:48.808Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "5",
+    "object_repr": "Oshino Ai Banpresto",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2026-11-16T23:40:35.049Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "6",
+    "object_repr": "Frieren Aniplex",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2026-11-16T23:41:14.000Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "7",
+    "object_repr": "Homem Aranha articulado",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2026-11-16T23:41:32.845Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "7",
+    "object_repr": "Homem Aranha articulado",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Descricao\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2026-11-16T23:42:43.080Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "8",
+    "object_repr": "Homem de Ferro Articulado",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 16,
+  "fields": {
+    "action_time": "2026-11-16T23:43:32.649Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "9",
+    "object_repr": "Lagoona Básica g1 creeproduction",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 17,
+  "fields": {
+    "action_time": "2026-11-16T23:44:43.507Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "10",
+    "object_repr": "Lagoona Blue Ghouls Night Out",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 18,
+  "fields": {
+    "action_time": "2026-11-16T23:45:56.165Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "11",
+    "object_repr": "Tanjiro Kamado Sega",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 19,
+  "fields": {
+    "action_time": "2026-11-16T23:47:17.115Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "12",
+    "object_repr": "Catty Noir 13 Wishes",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 20,
+  "fields": {
+    "action_time": "2026-11-17T00:01:08.161Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "13",
+    "object_repr": "Frieren Maximatic",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$Mu6Yuxp4XDs51LsvpdmNHG$CGxBLZsyx3DaBPBT9DNAd7qOZZ3O7UHBnFZC5P76wos=",
+    "last_login": "2026-11-17T00:54:35.937Z",
+    "is_superuser": true,
+    "username": "Ge",
+    "first_name": "",
+    "last_name": "",
+    "email": "geolauer10@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-11-16T23:09:26.850Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$PX3nUkN0XayxTBoJW2lOfq$zrbxxtw3vpjVCkicA+TWlq83qfpnElMGHcgmFsI0E7g=",
+    "last_login": "2026-11-17T00:37:48.599Z",
+    "is_superuser": false,
+    "username": "geovana",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-11-17T00:37:35.444Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "xisckvm08iaikdigpxuqg8mj6rx5q58o",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSE8C7h07zeQGQakaiAp7cr479qkC93ec859sQjbWuM28hJnYmcm2el3Q0iP3HZAd2i3zlNv6zIj3xV-0MGvnfLzcrh_BxVG_dZai-CFyzLTpCVJY4QEG0AVqyYPAVAmo1GQFs4UUqk4j8oSCswBSmLvD8HlN-g:1xT7T1:a4o5UixStFqIYG4dcNW-uq52rmd1bEU458azbR8Qr80",
+    "expire_date": "2026-12-01T00:54:35.947Z"
+  }
+},
+{
+  "model": "loja.categoria",
+  "pk": 1,
+  "fields": {
+    "nome": "Demon Slayer"
+  }
+},
+{
+  "model": "loja.categoria",
+  "pk": 2,
+  "fields": {
+    "nome": "Oshi no ko"
+  }
+},
+{
+  "model": "loja.categoria",
+  "pk": 3,
+  "fields": {
+    "nome": "Monster high"
+  }
+},
+{
+  "model": "loja.categoria",
+  "pk": 4,
+  "fields": {
+    "nome": "Frieren"
+  }
+},
+{
+  "model": "loja.categoria",
+  "pk": 5,
+  "fields": {
+    "nome": "Marvel"
+  }
+},
+{
+  "model": "loja.produto",
+  "pk": 1,
+  "fields": {
+    "categoria": 1,
+    "nome": "Shinobu Funny Knights",
+    "descricao": "A figura em escala 1/7 de Shinobu Kocho é um item colecionável de anime, fabricado pela Funny Knights (distribuído pela Aoshima) e baseado na personagem de Demon Slayer: Kimetsu no Yaiba.",
+    "preco": "800.00",
+    "estoque": 25,
+    "imagem": "produtos/images.jfif"
+  }
+},
+{
+  "model": "loja.produto",
+  "pk": 2,
+  "fields": {
+    "categoria": 1,
+    "nome": "Shinobu ANIPLEX",
+    "descricao": "Retrata a Hashira do Inseto em uma pose dinâmica e desafiadora da gravidade, rodeada por efeitos translúcidos de borboletas e com sua espada Nichirin. Pode ser conferida na Aniplex Online e análises detalhadas na MyFigureCollection.",
+    "preco": "1200.00",
+    "estoque": 10,
+    "imagem": "produtos/images_2.jfif"
+  }
+},
+{
+  "model": "loja.produto",
+  "pk": 3,
+  "fields": {
+    "categoria": 1,
+    "nome": "Shinobu Alter",
+    "descricao": "Retrata a Hashira do Inseto em uma pose dinâmica e desafiadora da gravidade, rodeada por efeitos translúcidos de borboletas e com sua espada Nichirin. Pode ser conferida na Aniplex Online e análises detalhadas na MyFigureCollection.",
+    "preco": "900.00",
+    "estoque": 3,
+    "imagem": "produtos/images_3.jfif"
+  }
+},
+{
+  "model": "loja.produto",
+  "pk": 4,
+  "fields": {
+    "categoria": 1,
+    "nome": "Rengoku Aniplex",
+    "descricao": "Diretamente de Demon Slayer: Kimetsu no Yaiba, o lendário Hashira das Chamas ganha vida nesta obra-prima produzida pela Aniplex! Com escultura impecável e acabamento de alto nível, esta figura captura toda a determinação, força e espírito inabalável de Kyojuro Rengoku em combate.",
+    "preco": "450.00",
+    "estoque": 15,
+    "imagem": "produtos/images_4.jfif"
+  }
+},
+{
+  "model": "loja.produto",
+  "pk": 5,
+  "fields": {
+    "categoria": 2,
+    "nome": "Oshino Ai Banpresto",
+    "descricao": "Diretamente do sucesso Oshi no Ko, a inesquecível estrela do grupo B-Komachi ganha vida nesta peça encantadora produzida pela Banpresto! Com pose carismática e pintura vibrante, esta figura captura todo o brilho, a energia e o olhar marcante de Ai Hoshino no palco.",
+    "preco": "89.99",
+    "estoque": 40,
+    "imagem": "produtos/images_6.jfif"
+  }
+},
+{
+  "model": "loja.produto",
+  "pk": 6,
+  "fields": {
+    "categoria": 4,
+    "nome": "Frieren Aniplex",
+    "descricao": "Diretamente de Frieren e a Jornada para o Além (Sousou no Frieren), a icônica maga elfa ganha vida nesta obra-prima oficial da Aniplex (em parceria com a Claynel)! Com escultura delicada e pintura de altíssimo nível, a peça captura toda a serenidade, elegância e atmosfera nostálgica da personagem.",
+    "preco": "900.00",
+    "estoque": 5,
+    "imagem": "produtos/frieren_2.jfif"
+  }
+},
+{
+  "model": "loja.produto",
+  "pk": 7,
+  "fields": {
+    "categoria": 5,
+    "nome": "Homem Aranha articulado",
+    "descricao": "Traga o herói mais icônico da Marvel diretamente para a sua coleção com esta incrível figura articulada do Homem-Aranha! Projetada para capturar toda a leveza, agilidade e dinamismo do Amigão da Vizinhança, ela permite recriar as poses acrobáticas mais clássicas dos quadrinhos e dos cinemas.",
+    "preco": "300.00",
+    "estoque": 12,
+    "imagem": "produtos/images_5.jfif"
+  }
+},
+{
+  "model": "loja.produto",
+  "pk": 8,
+  "fields": {
+    "categoria": 5,
+    "nome": "Homem de Ferro Articulado",
+    "descricao": "Leve a armadura mais icônica do universo Marvel diretamente para a sua coleção com esta incrível figura articulada do Homem de Ferro! Projetada com riqueza de detalhes mecânicos e pintura metálica marcante, ela permite recriar as poses de voo, disparo e combate mais épicas de Tony Stark.",
+    "preco": "180.00",
+    "estoque": 19,
+    "imagem": "produtos/homem.jpg"
+  }
+},
+{
+  "model": "loja.produto",
+  "pk": 9,
+  "fields": {
+    "categoria": 3,
+    "nome": "Lagoona Básica g1 creeproduction",
+    "descricao": "A filha do Monstro Marinho está de volta em todo o seu esplendor nostálgico! Esta edição oficial Creeproduction da Mattel recria fielmente o visual icônico de lançamento da Lagoona Blue na primeira geração (G1) de Monster High, trazendo todos os detalhes que conquistaram os fãs desde o primeiro dia de aula.",
+    "preco": "450.00",
+    "estoque": 100,
+    "imagem": "produtos/lagoona_basica.jfif"
+  }
+},
+{
+  "model": "loja.produto",
+  "pk": 10,
+  "fields": {
+    "categoria": 3,
+    "nome": "Lagoona Blue Ghouls Night Out",
+    "descricao": "A filha do Monstro Marinho está pronta para uma festa inesquecível! Esta edição especial da linha Ghouls Night Out (Mattel, G1) traz a Lagoona Blue com um visual glamouroso, cheio de brilho e detalhes aquáticos únicos que fazem dela uma das versões mais queridas pelos colecionadores.",
+    "preco": "250.00",
+    "estoque": 7,
+    "imagem": "produtos/lagoona.jpg"
+  }
+},
+{
+  "model": "loja.produto",
+  "pk": 11,
+  "fields": {
+    "categoria": 1,
+    "nome": "Tanjiro Kamado Sega",
+    "descricao": "Diretamente de Demon Slayer: Kimetsu no Yaiba, o protagonista mais determinado dos animes ganha vida nesta peça oficial produzida pela SEGA! Com escultura dinâmica e pintura vibrante, esta figura captura toda a bravura e o espírito protetor de Tanjiro Kamado em ação.",
+    "preco": "95.00",
+    "estoque": 60,
+    "imagem": "produtos/Action-Figures-Boneco-Demon-Slayer-Kimetsu-no-Yaiba-Tanjiro-Super-Premium-Sega-_VW15C4c.jpg"
+  }
+},
+{
+  "model": "loja.produto",
+  "pk": 12,
+  "fields": {
+    "categoria": 3,
+    "nome": "Catty Noir 13 Wishes",
+    "descricao": "Diretamente do filme Monster High: 13 Desejos (13 Wishes), a icônica cantora pop chega trazendo muito brilho, atitude e sorte! Esta edição clássica de 2013 da Mattel (G1) apresenta a Catty Noir em seu visual de palco inesquecível, repleto de detalhes prateados e rosa-choque que encantam qualquer colecionador.",
+    "preco": "400.00",
+    "estoque": 2,
+    "imagem": "produtos/images_7.jfif"
+  }
+},
+{
+  "model": "loja.produto",
+  "pk": 13,
+  "fields": {
+    "categoria": 4,
+    "nome": "Frieren Maximatic",
+    "descricao": "Diretamente de Frieren e a Jornada para o Além (Sousou no Frieren), a lendária maga elfa ganha vida nesta figura dinâmica da renomada linha Maximatic, produzida pela Bandai Spirits Banpresto! Conhecida pelo tamanho generoso e esculturas cheias de movimento, a linha traz Frieren empunhando seu cajado em uma pose icônica de combate.",
+    "preco": "75.00",
+    "estoque": 26,
+    "imagem": "produtos/frieren.jpg"
+  }
+},
+{
+  "model": "loja.pedido",
+  "pk": 1,
+  "fields": {
+    "usuario": 1,
+    "criado_em": "2026-11-16T23:47:24.735Z",
+    "finalizado": true
+  }
+},
+{
+  "model": "loja.pedido",
+  "pk": 2,
+  "fields": {
+    "usuario": 1,
+    "criado_em": "2026-11-16T23:47:37.634Z",
+    "finalizado": true
+  }
+},
+{
+  "model": "loja.pedido",
+  "pk": 3,
+  "fields": {
+    "usuario": 1,
+    "criado_em": "2026-11-17T00:54:43.842Z",
+    "finalizado": true
+  }
+},
+{
+  "model": "loja.pedido",
+  "pk": 4,
+  "fields": {
+    "usuario": 1,
+    "criado_em": "2026-11-17T01:19:17.112Z",
+    "finalizado": true
+  }
+},
+{
+  "model": "loja.pedido",
+  "pk": 5,
+  "fields": {
+    "usuario": 1,
+    "criado_em": "2026-11-17T01:19:34.607Z",
+    "finalizado": false
+  }
+},
+{
+  "model": "loja.itempedido",
+  "pk": 1,
+  "fields": {
+    "pedido": 1,
+    "produto": 9,
+    "quantidade": 1
+  }
+},
+{
+  "model": "loja.itempedido",
+  "pk": 2,
+  "fields": {
+    "pedido": 2,
+    "produto": 7,
+    "quantidade": 1
+  }
+},
+{
+  "model": "loja.itempedido",
+  "pk": 3,
+  "fields": {
+    "pedido": 3,
+    "produto": 1,
+    "quantidade": 1
+  }
+},
+{
+  "model": "loja.itempedido",
+  "pk": 4,
+  "fields": {
+    "pedido": 3,
+    "produto": 2,
+    "quantidade": 1
+  }
+},
+{
+  "model": "loja.itempedido",
+  "pk": 5,
+  "fields": {
+    "pedido": 3,
+    "produto": 6,
+    "quantidade": 1
+  }
+},
+{
+  "model": "loja.itempedido",
+  "pk": 7,
+  "fields": {
+    "pedido": 3,
+    "produto": 12,
+    "quantidade": 2
+  }
+},
+{
+  "model": "loja.itempedido",
+  "pk": 8,
+  "fields": {
+    "pedido": 4,
+    "produto": 5,
+    "quantidade": 1
+  }
+}
+]
